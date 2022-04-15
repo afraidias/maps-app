@@ -1,0 +1,31 @@
+<div
+  *ngIf="isLoadingPlaces" 
+  class="bg-white rounded-xl mt-1 p-2 border border-slate-300">
+  <div class="bg-zinc-700 rounded-md p-4 text-white text-center">
+    <h6>Loading</h6>
+    <span>Please wait ... </span>
+  </div>
+</div>
+
+<div 
+  *ngIf="places.length > 0" 
+  class="bg-white rounded-xl mt-1 px-2 border border-slate-300">
+  <ul role="list" class="py-2">
+    <li 
+      *ngFor="let place of places" 
+      class="flex justify-between p-2 hover:bg-blue-200 rounded-md hover:cursor-pointer"
+      [class.bg-blue-100]="place.id === selectedId"
+      (click)="flyTo(place)">
+      <div class="truncate">
+        <h6 class="text-bold text-blue-500 truncate">{{ place.text_es }}</h6>
+        <p class="text-xs text-zin-700 truncate">{{ place.place_name }}</p>
+      </div>
+      <div class="flex items-center ml-2">
+        <button 
+          type="button"
+          class="p-2 rounded-md text-white bg-emerald-400 hover:bg-emerald-700"
+        >GO</button>
+      </div>
+    </li>
+  </ul>
+</div>
