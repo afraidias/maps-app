@@ -30,4 +30,12 @@ export class SearchResultsComponent {
     this.selectedId = place.id;
   }
 
+  getDirections(place: Feature) {
+    if (!this.placesService.userLocation) throw new Error('It not userLocation');
+    
+    const start = this.placesService.userLocation;
+    const end   = place.center as [number, number];
+    this.mapService.getRouteBetweenPoints(start, end);
+  }
+
 }
